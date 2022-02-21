@@ -1,5 +1,5 @@
 module "my_vpc" {
-    source = "../modules/VPC"
+    source = "modules/VPC"
 
     //same variable as networkvars = 
     VPC_CIDR = var.VPC_CIDR
@@ -14,7 +14,7 @@ module "my_vpc" {
 }
 
 module "my_ec2_public_0" {
-    source = "../modules/EC2"
+    source = "modules/EC2"
 
     EC2_Type = "t2.micro"
     my_subnet_id = module.my_vpc.public_subnet_id_1
@@ -27,7 +27,7 @@ module "my_ec2_public_0" {
 }
 
 module "my_ec2_public_1" {
-    source = "../modules/EC2"
+    source = "modules/EC2"
 
     EC2_Type = "t2.micro"
     //my_subnet_id = module.my_public_subnet_2
@@ -43,7 +43,7 @@ module "my_ec2_public_1" {
 
     
 module "my_ec2_private" {
-    source = "../modules/EC2"
+    source = "modules/EC2"
     
     EC2_Type = "t2.micro"   //doubt
     my_subnet_id = module.my_vpc.private_subnet_id
@@ -57,14 +57,14 @@ module "my_ec2_private" {
 }
 
 module "my_sg" {
-    source = "../modules/VPC/SG"
+    source = "modules/VPC/SG"
 
     my_vpc_id = module.my_vpc.VPC_ID
 
 }
 
  module "my_lb" {
-    source = "../modules/LoadBalancer"
+    source = "modules/LoadBalancer"
 
     Lb_SG = [module.my_sg.SG_ID]
     Lb_subnets = [module.my_vpc.public_subnet_id_1, module.my_vpc.public_subnet_id_2]
