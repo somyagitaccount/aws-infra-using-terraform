@@ -22,7 +22,7 @@ module "my_ec2_public_0" {
     //private_subnet_id = module.my_vpc.private_subnet_id
     ec2_tag = {
         "Name"        = "Sonarqube-Server"
-         type         = "public"
+         type         = "Sonarqube-Server"
     }
 }
 
