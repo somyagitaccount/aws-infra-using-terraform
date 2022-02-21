@@ -1,42 +1,42 @@
+#!groovy
 pipeline {
-    agent any 
-    tools
-    {
-       terraform "terraform"
+  agent any
+  stages {
+    stage('checkout') {
+     steps {
+
+       git branch: 'main', url: 'https://github.com/somyagitaccount/aws-infra-using-terraform.git'
+
+         }
+       }
+
+          stage('Terraform Init') {
+            steps {
+              sh "terraform init"
+            }
+          }
+          stage('Terraform Plan') {
+             steps {
+               sh "terraform plan -out=tfplan -input=false"
+             }
+           }
+          stage('Approval') {
+            steps {
+              script {
+                def userInput = input(id: 'confirm', message: 'Apply Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'confirm'] ])
+        }
+      }
     }
 
-    stages {
-        stage ("Terraform Init") {
-            steps {
-                sh 'terraform init'
-            }
-        }
-
-        stage ("Terraform Plan") {
-            steps {
-                sh 'terraform plan'
-            }
-        }
-
-        // stage ("Terraform Approval") {
-        //     steps {
-
-        //     }
-        // }
-
-        stage ("Terraform Apply") {
-            steps {
-                sh 'terraform apply'
-            }
-        }
-
-        stage ("Terraform Destroy") {
-            steps {
-                sh 'terraform destroy'
-            }
-        }
-
-    }
+           stage('Terraform Apply') {
+             steps {
+                 sh 'terraform apply --auto-approve -input=false tfplan'
+               }
+           }
+        //   stage('Terraform Destroy') {
+        //      steps {
+        //          sh 'terraform destroy --auto-approve -input=false'
+        //        }
+        //    }
+  }
 }
-
-
