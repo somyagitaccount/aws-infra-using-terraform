@@ -1,38 +1,38 @@
 pipeline {
-    agent any {
+    agent any 
         stages {
-            stage ("terraform init") {
+            stage ("Terraform Init") {
                 steps {
                     sh 'terraform init'
                 }
             }
 
-            stage ("terraform plan") {
+            stage ("Terraform Plan") {
                 steps {
                     sh 'terraform plan'
                 }
             }
 
-            // stage ("terraform approval") {
+            // stage ("Terraform Approval") {
             //     steps {
 
             //     }
             // }
 
-            stage ("terraform apply") {
+            stage ("Terraform Apply") {
                 steps {
                     sh 'terraform apply'
                 }
             }
 
-            // stage ("terraform destroy") {
+            // stage ("Terraform Destroy") {
             //     steps {
             //         sh 'terraform destroy'
             //     }
             // }
 
         }
-    }
+    
 }
 
 
