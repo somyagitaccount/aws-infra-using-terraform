@@ -21,8 +21,8 @@ module "my_ec2_public_0" {
     my_sg_id = [module.my_sg.SG_ID]
     //private_subnet_id = module.my_vpc.private_subnet_id
     ec2_tag = {
-        "Name"        = "Sonarqube-Server"
-         type         = "Sonarqube-Server"
+        "Name"        = "public_serve-1"
+         type         = "public"
     }
 }
 
