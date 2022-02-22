@@ -42,19 +42,19 @@ module "my_ec2_public_1" {
 
 
     
-module "my_ec2_private" {
-    source = "./modules/EC2"
+# module "my_ec2_private" {
+#     source = "./modules/EC2"
     
-    EC2_Type = "t2.micro"   //doubt
-    my_subnet_id = module.my_vpc.private_subnet_id
-    //public_subnet_id = module.my_vpc.public_subnet_id
-    my_sg_id = [module.my_sg.SG_ID]
-    ec2_tag = {
-        "Name"        = "private_server"
-         type         = "private"
-    }
-    //depends_on = [module.my_sg]
-}
+#     EC2_Type = "t2.micro"   //doubt
+#     my_subnet_id = module.my_vpc.private_subnet_id
+#     //public_subnet_id = module.my_vpc.public_subnet_id
+#     my_sg_id = [module.my_sg.SG_ID]
+#     ec2_tag = {
+#         "Name"        = "private_server"
+#          type         = "private"
+#     }
+#     //depends_on = [module.my_sg]
+# }
 
 module "my_sg" {
     source = "./modules/VPC/SG"
