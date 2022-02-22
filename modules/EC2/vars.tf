@@ -13,7 +13,7 @@ variable "AWS_Region" {
 # }
 
 variable "AMI_ID" {
-  default = "ami-04dd4500af104442f"
+  default = "ami-08ca3fed11864d6bb"
 }
 variable "EC2_Type" {
     default     =  "t2.micro"
