@@ -5,7 +5,7 @@ resource "aws_instance" "ec2_instance" {
   subnet_id = var.my_subnet_id //doubt
   //subnet_id = var.private_sub
   associate_public_ip_address  = "true"
-  key_name = "terraform_keyPair"
+  key_name = "aws_infra_keyPair"
   vpc_security_group_ids = var.my_sg_id
   tags = var.ec2_tag
 
