@@ -11,9 +11,9 @@ resource "aws_instance" "ec2_instance" {
 
   user_data = <<-EOF
             #!/bin/bash
-            sudo yum update -y
-            sudo yum install httpd -y
-            sudo systemctl start httpd.service
+            sudo apt-get update -y
+            sudo apt-get install apache2 -y
+            sudo systemctl start apache2
             sudo bash -c 'echo this is my terraform module >/var/www/html/index.html'
             EOF
   //vpc_security_group_ids = [aws_security_group.test_sg_1.id] //doubt
