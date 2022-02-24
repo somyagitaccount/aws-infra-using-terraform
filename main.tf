@@ -18,6 +18,7 @@ module "my_ec2_public_0" {
 
     EC2_Type = "t2.micro"
     my_subnet_id = module.my_vpc.public_subnet_id_1
+    
     my_sg_id = [module.my_sg.SG_ID]
     //private_subnet_id = module.my_vpc.private_subnet_id
     ec2_tag = {
