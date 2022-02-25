@@ -75,6 +75,11 @@ module "my_sg" {
     
 }
 
+module "my_s3" {
+    source = "./modules/S3"
+  
+}
+
 
 
     
