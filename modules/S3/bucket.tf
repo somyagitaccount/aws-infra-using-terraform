@@ -6,7 +6,7 @@ resource "aws_s3_bucket" "terraform-state" {
     }
 
     versioning {
-      enabled = true
+      enabled = false
     }
 
     server_side_encryption_configuration {
